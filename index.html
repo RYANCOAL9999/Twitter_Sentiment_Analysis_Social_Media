@@ -7574,8 +7574,6 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">nltk</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -7620,7 +7618,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'https://RYANCOAL9999.github.com/Twitter_Sentiment_Analysis/train.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'https://ryancoal9999.github.com/Twitter_Sentiment_Analysis/train.csv'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8128,7 +8126,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'https://RYANCOAL9999.github.com/Twitter_Sentiment_Analysis/test.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'https://ryancoal9999.github.com/Twitter_Sentiment_Analysis/test.csv'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9437,17 +9435,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="wc" src="https://az158878.vo.msecnd.net/marketing/product/42949674199/f89c7e08-56ac-457d-ae87-b6165e51432f/screen2.jpg"/></p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="A-wordcloud-is-a-visualization-wherein-the-most-frequent-words-appear-in-large-size-and-the-less-frequent-words-appear-in-smaller-sizes.">A wordcloud is a visualization wherein the most frequent words appear in large size and the less frequent words appear in smaller sizes.<a class="anchor-link" href="#A-wordcloud-is-a-visualization-wherein-the-most-frequent-words-appear-in-large-size-and-the-less-frequent-words-appear-in-smaller-sizes.">¶</a></h3>
 </div>
 </div>
@@ -9497,18 +9484,19 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># combining the image with the dataset</span>
-<span class="n">Mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://RYANCOAL9999.github.com/Twitter_Sentiment_Analysis_Social_Media/Twitter-PNG-Image.png'</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
+<span class="n">Mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://ryancoal9999.github.io/Twitter_Sentiment_Analysis_Social_Media/Twitter-PNG-Image.png'</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
 <span class="c1"># We use the ImageColorGenerator library from Wordcloud </span>
 <span class="c1"># Here we take the color of the image and impose it over our wordcloud</span>
 <span class="n">image_colors</span> <span class="o">=</span> <span class="n">ImageColorGenerator</span><span class="p">(</span><span class="n">Mask</span><span class="p">)</span>
 <span class="c1"># Now we use the WordCloud function from the wordcloud library </span>
 <span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">background_color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">Mask</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">all_words_positive</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'The Positive Word cloud'</span><span class="p">)</span>
 <span class="c1"># Size of the image generated </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="c1"># Here we recolor the words from the dataset to the image's color</span>
 <span class="c1"># recolor just recolors the default colors to the image's blue color</span>
 <span class="c1"># interpolation is used to smooth the image generated </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wc</span><span class="o">.</span><span class="n">recolor</span><span class="p">(</span><span class="n">color_func</span><span class="o">=</span><span class="n">image_colors</span><span class="p">),</span><span class="n">interpolation</span><span class="o">=</span><span class="s2">"hamming"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wc</span><span class="o">.</span><span class="n">recolor</span><span class="p">(</span><span class="n">color_func</span><span class="o">=</span><span class="n">image_colors</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">"hamming"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -9573,18 +9561,19 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># combining the image with the dataset</span>
-<span class="n">Mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://RYANCOAL9999.github.com/Twitter_Sentiment_Analysis_Social_Media/Twitter-PNG-Image.png'</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
+<span class="n">Mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://ryancoal9999.github.io/Twitter_Sentiment_Analysis_Social_Media/Twitter-PNG-Image.png'</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
 <span class="c1"># We use the ImageColorGenerator library from Wordcloud </span>
 <span class="c1"># Here we take the color of the image and impose it over our wordcloud</span>
 <span class="n">image_colors</span> <span class="o">=</span> <span class="n">ImageColorGenerator</span><span class="p">(</span><span class="n">Mask</span><span class="p">)</span>
 <span class="c1"># Now we use the WordCloud function from the wordcloud library </span>
 <span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">background_color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">Mask</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">all_words_negative</span><span class="p">)</span>
-<span class="c1"># Size of the image generated </span>
+<span class="c1"># Size of the image generated</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'The Negative Word cloud'</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="c1"># Here we recolor the words from the dataset to the image's color</span>
 <span class="c1"># recolor just recolors the default colors to the image's blue color</span>
 <span class="c1"># interpolation is used to smooth the image generated </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wc</span><span class="o">.</span><span class="n">recolor</span><span class="p">(</span><span class="n">color_func</span><span class="o">=</span><span class="n">image_colors</span><span class="p">),</span><span class="n">interpolation</span><span class="o">=</span><span class="s2">"gaussian"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wc</span><span class="o">.</span><span class="n">recolor</span><span class="p">(</span><span class="n">color_func</span><span class="o">=</span><span class="n">image_colors</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">"gaussian"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -11796,8 +11785,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <h4 id="TF(t)-=-(Number-of-times-term-t-appears-in-a-document)-/-(Total-number-of-terms-in-the-document).">TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).<a class="anchor-link" href="#TF(t)-=-(Number-of-times-term-t-appears-in-a-document)-/-(Total-number-of-terms-in-the-document).">¶</a></h4><ul>
 <li>IDF: Inverse Document Frequency, which measures how important a term is. While computing TF, all terms are considered equally important. However it is known that certain terms, such as "is", "of", and "that", may appear a lot of times but have little importance. Thus we need to weigh down the frequent terms while scale up the rare ones, by computing the following:</li>
 </ul>
-<h4 id="IDF(t)-=-log_e(Total-number-of-documents-/-Number-of-documents-with-term-t-in-it).">IDF(t) = log_e(Total number of documents / Number of documents with term t in it).<a class="anchor-link" href="#IDF(t)-=-log_e(Total-number-of-documents-/-Number-of-documents-with-term-t-in-it).">¶</a></h4><h4 id="Example:">Example:<a class="anchor-link" href="#Example:">¶</a></h4><p>Consider a document containing 100 words wherein the word cat appears 3 times. The term frequency (i.e., tf) for cat is then (3 / 100) = 0.03. Now, assume we have 10 million documents and the word cat appears in one thousand of these. Then, the inverse document frequency (i.e., idf) is calculated as log(10,000,000 / 1,000) = 4. Thus, the Tf-idf weight is the product of these quantities: 0.03 * 4 = 0.12.</p>
-<p><img alt="tfidf" src="https://skymind.ai/images/wiki/tfidf.png"/></p>
+<h4 id="IDF(t)-=-log_e(Total-number-of-documents-/-Number-of-documents-with-term-t-in-it).">IDF(t) = log_e(Total number of documents / Number of documents with term t in it).<a class="anchor-link" href="#IDF(t)-=-log_e(Total-number-of-documents-/-Number-of-documents-with-term-t-in-it).">¶</a></h4>
 </div>
 </div>
 </div>
@@ -13357,7 +13345,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><img alt="ml" src="https://ak8.picdn.net/shutterstock/videos/23516428/thumb/12.jpg?i10c=img.resize(height:160"/>)</p>
+<p><img alt="ml" src="https://ak8.picdn.net/shutterstock/videos/23516428/thumb/12.jpg?i10c=img.resize(height:160">)</img></p>
 </div>
 </div>
 </div>
