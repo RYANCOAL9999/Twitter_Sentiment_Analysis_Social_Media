@@ -9140,7 +9140,11 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">]))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9595,7 +9599,9 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">all_words_positive</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">all_words_positive</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">text</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9667,7 +9673,9 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">all_words_negative</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">all_words_negative</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">text</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9761,7 +9769,9 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_positive</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_positive</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span>
+    <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9811,7 +9821,9 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_negative</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_negative</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span>
+    <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9945,7 +9957,10 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_positive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Hashtags'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_positive</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="s1">'Count'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_positive</span><span class="o">.</span><span class="n">values</span><span class="p">())})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_positive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">'Hashtags'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_positive</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> 
+    <span class="s1">'Count'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_positive</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -10172,7 +10187,10 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_negative</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Hashtags'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_negative</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="s1">'Count'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_negative</span><span class="o">.</span><span class="n">values</span><span class="p">())})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_negative</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">'Hashtags'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_negative</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="s1">'Count'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_negative</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -10376,7 +10394,12 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bow_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="s1">'english'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bow_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span>
+    <span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> 
+    <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+    <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
+    <span class="n">stop_words</span><span class="o">=</span><span class="s1">'english'</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -11971,7 +11994,12 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="s1">'english'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
+    <span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> 
+    <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+    <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
+    <span class="n">stop_words</span><span class="o">=</span><span class="s1">'english'</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
