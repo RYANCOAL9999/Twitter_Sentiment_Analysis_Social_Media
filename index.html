@@ -13711,7 +13711,12 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Bag-of-Words Features</span>
-<span class="n">x_train_bow</span><span class="p">,</span> <span class="n">x_valid_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">,</span> <span class="n">y_valid_bow</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_bow</span><span class="p">,</span> <span class="n">train</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x_train_bow</span><span class="p">,</span> <span class="n">x_valid_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">,</span> <span class="n">y_valid_bow</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">train_bow</span><span class="p">,</span> 
+    <span class="n">train</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span> 
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> 
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13726,7 +13731,12 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TF-IDF features</span>
-<span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">x_valid_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">,</span> <span class="n">y_valid_tfidf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_tfidf_matrix</span><span class="p">,</span> <span class="n">train</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">x_valid_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">,</span> <span class="n">y_valid_tfidf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">train_tfidf_matrix</span><span class="p">,</span> 
+    <span class="n">train</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span> 
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> 
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">17</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14752,7 +14762,14 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [75]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">Algo</span><span class="o">=</span><span class="p">[</span><span class="s1">'LogisticRegression(Bag-of-Words)'</span><span class="p">,</span> <span class="s1">'XGBoost(Bag-of-Words)'</span><span class="p">,</span> <span class="s1">'DecisionTree(Bag-of-Words)'</span><span class="p">,</span> <span class="s1">'LogisticRegression(TF-IDF)'</span><span class="p">,</span> <span class="s1">'XGBoost(TF-IDF)'</span><span class="p">,</span> <span class="s1">'DecisionTree(TF-IDF)'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">Algo</span><span class="o">=</span><span class="p">[</span>
+    <span class="s1">'LogisticRegression(Bag-of-Words)'</span><span class="p">,</span> 
+    <span class="s1">'XGBoost(Bag-of-Words)'</span><span class="p">,</span> 
+    <span class="s1">'DecisionTree(Bag-of-Words)'</span><span class="p">,</span> 
+    <span class="s1">'LogisticRegression(TF-IDF)'</span><span class="p">,</span> 
+    <span class="s1">'XGBoost(TF-IDF)'</span><span class="p">,</span> 
+    <span class="s1">'DecisionTree(TF-IDF)'</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -14766,8 +14783,18 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="p">[</span><span class="n">log_bow</span><span class="p">,</span> <span class="n">xgb_bow</span><span class="p">,</span> <span class="n">dct_score_bow</span><span class="p">,</span> <span class="n">log_tfidf</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">dct_score_tfidf</span><span class="p">]</span>
-<span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'Model'</span><span class="p">:</span><span class="n">Algo</span><span class="p">,</span><span class="s1">'F1_Score'</span><span class="p">:</span><span class="n">score</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">log_bow</span><span class="p">,</span> 
+    <span class="n">xgb_bow</span><span class="p">,</span> 
+    <span class="n">dct_score_bow</span><span class="p">,</span> 
+    <span class="n">log_tfidf</span><span class="p">,</span> 
+    <span class="n">score</span><span class="p">,</span> 
+    <span class="n">dct_score_tfidf</span>
+<span class="p">]</span>
+<span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s1">'Model'</span><span class="p">:</span><span class="n">Algo</span><span class="p">,</span><span class="s1">'F1_Score'</span><span class="p">:</span><span class="n">score</span><span class="p">},</span> 
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
