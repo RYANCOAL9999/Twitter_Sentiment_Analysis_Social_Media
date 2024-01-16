@@ -7626,8 +7626,20 @@ a.anchor-link {
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">text</span>
-
-<span class="c1"># extract hashtags from tweets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># extract hashtags from tweets</span>
 <span class="k">def</span> <span class="nf">Hashtags_Extract</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">hashtags</span><span class="o">=</span><span class="p">[]</span>
     <span class="c1"># Loop over the words in the tweet</span>
@@ -7635,30 +7647,65 @@ a.anchor-link {
         <span class="n">ht</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'#(\w+)'</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">hashtags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hashtags</span>
-
-<span class="c1"># show the Words with plt postive or negative</span>
-<span class="k">def</span> <span class="nf">showWordsTive</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">background_color</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">all_words_tive</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">):</span>
-    <span class="c1"># Mask the array with url</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># show the Words with plt postive or negative</span>
+<span class="k">def</span> <span class="nf">showWordsTive</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">background_color</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">all_words_tive</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">):</span>
+    <span class="c1"># Mask the array with url raw data</span>
     <span class="n">Mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">))</span>
-    <span class="c1"># Here we take the color of the image and impose it over our wordcloud</span>
-    <span class="c1"># Now we use the WordCloud function from the wordcloud library </span>
+    <span class="c1"># take the color of the image and impose it over our wordcloud function</span>
     <span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span>
         <span class="n">background_color</span><span class="o">=</span><span class="n">background_color</span><span class="p">,</span> 
         <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> 
         <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> 
         <span class="n">mask</span><span class="o">=</span><span class="n">Mask</span>
     <span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">all_words_tive</span><span class="p">)</span>
-    <span class="c1"># We use the ImageColorGenerator library from Wordcloud </span>
+    <span class="c1"># using the ImageColorGenerator library from Wordcloud with mask </span>
     <span class="n">image_colors</span> <span class="o">=</span> <span class="n">ImageColorGenerator</span><span class="p">(</span><span class="n">Mask</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'The Positive Word cloud'</span><span class="p">)</span>
     <span class="c1"># Size of the image generated </span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-    <span class="c1"># Here we recolor the words from the dataset to the image's color</span>
-    <span class="c1"># recolor just recolors the default colors to the image's blue color</span>
-    <span class="c1"># interpolation is used to smooth the image generated </span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wc</span><span class="o">.</span><span class="n">recolor</span><span class="p">(</span><span class="n">color_func</span><span class="o">=</span><span class="n">image_colors</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="c1"># recolor the words from the dataset to the image's color</span>
+        <span class="n">wc</span><span class="o">.</span><span class="n">recolor</span><span class="p">(</span><span class="n">color_func</span><span class="o">=</span><span class="n">image_colors</span><span class="p">),</span> 
+        <span class="c1"># interpolation is used to smooth the image generated </span>
+        <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span>
+    <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calcaute the F1 score with easy</span>
+<span class="k">def</span> <span class="nf">generateF1Score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">interactor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">):</span>
+    <span class="c1"># if prediction is greater than or equal to 0.3 than 1 else 0</span>
+    <span class="c1"># Where 0 is for positive sentiment tweets and 1 for negative sentiment tweets</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[:,</span> <span class="n">interactor</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">num</span>
+    <span class="c1"># converting the results to integer type</span>
+    <span class="n">score_int</span> <span class="o">=</span> <span class="n">score</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="c1"># calculating f1 score</span>
+    <span class="k">return</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">score_int</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -9626,13 +9673,14 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># combining the image with the dataset</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># combining the image with the dataset with all words is positive</span>
 <span class="n">showWordsTive</span><span class="p">(</span>
     <span class="s1">'https://ryancoal9999.github.io/Twitter_Sentiment_Analysis_Social_Media/Twitter-PNG-Image.png'</span><span class="p">,</span>
     <span class="s1">'black'</span><span class="p">,</span>
     <span class="mi">1500</span><span class="p">,</span>
     <span class="mi">4000</span><span class="p">,</span>
     <span class="n">all_words_positive</span><span class="p">,</span>
+    <span class="s1">'The Positive Word cloud'</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">,</span>
     <span class="mi">20</span><span class="p">,</span>
     <span class="s1">'hamming'</span>
@@ -9692,6 +9740,17 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Combining-the-image-with-the-dataset-with-all-words-is-positive">Combining the image with the dataset with all words is positive<a class="anchor-link" href="#Combining-the-image-with-the-dataset-with-all-words-is-positive">¶</a></h3>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9700,13 +9759,14 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># combining the image with the dataset</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># combining the image with the dataset with all words is negative</span>
 <span class="n">showWordsTive</span><span class="p">(</span>
     <span class="s1">'https://ryancoal9999.github.io/Twitter_Sentiment_Analysis_Social_Media/Twitter-PNG-Image.png'</span><span class="p">,</span>
     <span class="s1">'black'</span><span class="p">,</span>
     <span class="mi">1500</span><span class="p">,</span>
     <span class="mi">4000</span><span class="p">,</span>
     <span class="n">all_words_negative</span><span class="p">,</span>
+    <span class="s1">'The Negative Word cloud'</span><span class="p">,</span>
     <span class="mi">10</span><span class="p">,</span>
     <span class="mi">20</span><span class="p">,</span>
     <span class="s1">'gaussian'</span>
@@ -9757,7 +9817,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="A-nested-list-of-all-the-hashtags-from-the-positive-reviews-from-the-dataset">A nested list of all the hashtags from the positive reviews from the dataset<a class="anchor-link" href="#A-nested-list-of-all-the-hashtags-from-the-positive-reviews-from-the-dataset">¶</a></h4>
+<h4 id="Reviews-from-the-hashtags-dataset">Reviews from the hashtags dataset<a class="anchor-link" href="#Reviews-from-the-hashtags-dataset">¶</a></h4>
 </div>
 </div>
 </div>
@@ -9769,22 +9829,12 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_positive</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># A nested list of all the hashtags from the positive</span>
+<span class="n">ht_positive</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span>
     <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Here-we-unnest-the-list">Here we unnest the list<a class="anchor-link" href="#Here-we-unnest-the-list">¶</a></h4>
 </div>
 </div>
 </div>
@@ -9796,20 +9846,10 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_positive_unnest</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ht_positive</span><span class="p">,</span> <span class="p">[])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># unnest the list with ht postive </span>
+<span class="n">ht_positive_unnest</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ht_positive</span><span class="p">,</span> <span class="p">[])</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="A-nested-list-of-all-the-hashtags-from-the-negative-reviews-from-the-dataset">A nested list of all the hashtags from the negative reviews from the dataset<a class="anchor-link" href="#A-nested-list-of-all-the-hashtags-from-the-negative-reviews-from-the-dataset">¶</a></h4>
 </div>
 </div>
 </div>
@@ -9821,22 +9861,12 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_negative</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># A nested list of all the hashtags from the negative</span>
+<span class="n">ht_negative</span> <span class="o">=</span> <span class="n">Hashtags_Extract</span><span class="p">(</span>
     <span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">][</span><span class="n">combine</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Here-we-unnest-the-list">Here we unnest the list<a class="anchor-link" href="#Here-we-unnest-the-list">¶</a></h4>
 </div>
 </div>
 </div>
@@ -9848,7 +9878,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">ht_negative_unnest</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ht_negative</span><span class="p">,</span> <span class="p">[])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># unnest the list with ht negative </span>
+<span class="n">ht_negative_unnest</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ht_negative</span><span class="p">,</span> <span class="p">[])</span>
 </pre></div>
 </div>
 </div>
@@ -9883,18 +9914,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="For-Positive-Tweets-in-the-dataset">For Positive Tweets in the dataset<a class="anchor-link" href="#For-Positive-Tweets-in-the-dataset">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Counting-the-frequency-of-the-words-having-Positive-Sentiment">Counting the frequency of the words having Positive Sentiment<a class="anchor-link" href="#Counting-the-frequency-of-the-words-having-Positive-Sentiment">¶</a></h4>
+<h3 id="Counting-Tweets-with-Sentiment-in-the-dataset">Counting Tweets with Sentiment in the dataset<a class="anchor-link" href="#Counting-Tweets-with-Sentiment-in-the-dataset">¶</a></h3>
 </div>
 </div>
 </div>
@@ -9906,7 +9926,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">word_freq_positive</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">(</span><span class="n">ht_positive_unnest</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># counting the frequency of the words having Positive Sentiment</span>
+<span class="n">word_freq_positive</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">(</span><span class="n">ht_positive_unnest</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -9938,17 +9959,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Creating-a-dataframe-for-the-most-frequently-used-words-in-hashtags">Creating a dataframe for the most frequently used words in hashtags<a class="anchor-link" href="#Creating-a-dataframe-for-the-most-frequently-used-words-in-hashtags">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -9957,7 +9967,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_positive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># creating a dataframe for the most frequently used words with postive in hashtags</span>
+<span class="n">df_positive</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">'Hashtags'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_positive</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> 
     <span class="s1">'Count'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_positive</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="p">})</span>
@@ -10067,17 +10078,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Plotting-the-barplot-for-the-10-most-frequent-words-used-for-hashtags">Plotting the barplot for the 10 most frequent words used for hashtags<a class="anchor-link" href="#Plotting-the-barplot-for-the-10-most-frequent-words-used-for-hashtags">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -10086,7 +10086,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_positive_plot</span> <span class="o">=</span> <span class="n">df_positive</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'Count'</span><span class="p">)</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># plotting the barplot for the 10 most frequent words used for hashtags with postive dataset</span>
+<span class="n">df_positive_plot</span> <span class="o">=</span> <span class="n">df_positive</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'Count'</span><span class="p">)</span> 
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_positive_plot</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Hashtags'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'Count'</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
@@ -10106,28 +10107,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="For-Negative-Tweets-in-the-dataset">For Negative Tweets in the dataset<a class="anchor-link" href="#For-Negative-Tweets-in-the-dataset">¶</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Counting-the-frequency-of-the-words-having-Negative-Sentiment">Counting the frequency of the words having Negative Sentiment<a class="anchor-link" href="#Counting-the-frequency-of-the-words-having-Negative-Sentiment">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -10136,7 +10115,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">word_freq_negative</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">(</span><span class="n">ht_negative_unnest</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># counting the frequency of the words having Negative Sentiment </span>
+<span class="n">word_freq_negative</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">(</span><span class="n">ht_negative_unnest</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10168,17 +10148,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Creating-a-dataframe-for-the-most-frequently-used-words-in-hashtags">Creating a dataframe for the most frequently used words in hashtags<a class="anchor-link" href="#Creating-a-dataframe-for-the-most-frequently-used-words-in-hashtags">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -10187,7 +10156,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_negative</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># creating a dataframe for the most frequently used words in hashtags</span>
+<span class="n">df_negative</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">'Hashtags'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_negative</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
     <span class="s1">'Count'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">word_freq_negative</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="p">})</span>
@@ -10297,17 +10267,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Plotting-the-barplot-for-the-10-most-frequent-words-used-for-hashtags">Plotting the barplot for the 10 most frequent words used for hashtags<a class="anchor-link" href="#Plotting-the-barplot-for-the-10-most-frequent-words-used-for-hashtags">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -10316,7 +10275,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_negative_plot</span> <span class="o">=</span> <span class="n">df_negative</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'Count'</span><span class="p">)</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># plotting the barplot for the 10 most frequent words used for hashtags with negative dataset</span>
+<span class="n">df_negative_plot</span> <span class="o">=</span> <span class="n">df_negative</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'Count'</span><span class="p">)</span> 
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_negative_plot</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'Hashtags'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'Count'</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
@@ -10394,7 +10354,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">bow_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># initial the count vectorizer with bag-of-words</span>
+<span class="n">bow_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span>
     <span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> 
     <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
     <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
@@ -10413,9 +10374,23 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># bag-of-words feature matrix</span>
-<span class="n">bow</span> <span class="o">=</span> <span class="n">bow_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">])</span>
-<span class="n">df_bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bow</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># bag-of-words feature matrix with fit transform</span>
+<span class="n">bow_matrix</span> <span class="o">=</span> <span class="n">bow_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># bag-of-words matrix as dense matrix with DataFrame</span>
+<span class="n">df_bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bow_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -11994,7 +11969,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># initial the count vectorizer with TF-IDF</span>
+<span class="n">tfidf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
     <span class="n">max_df</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> 
     <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
     <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
@@ -12013,7 +11989,22 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TF-IDF feature matrix with fit transform</span>
+<span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">combine</span><span class="p">[</span><span class="s1">'Tidy_Tweets'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TF-IDF matrix as dense matrix with DataFrame</span>
 <span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -13596,7 +13587,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_bow</span> <span class="o">=</span> <span class="n">bow</span><span class="p">[:</span><span class="mi">31962</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># setup a training data from bag-of-words matrix</span>
+<span class="n">train_bow</span> <span class="o">=</span> <span class="n">bow_matrix</span><span class="p">[:</span><span class="mi">31962</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -13610,7 +13602,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_bow</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training bag-of-words matrix as dense matrix</span>
+<span class="n">train_bow</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -13653,7 +13646,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf_matrix</span><span class="p">[:</span><span class="mi">31962</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># setup a training data from TF-IDF matrix</span>
+<span class="n">train_tfidf_matrix</span> <span class="o">=</span> <span class="n">tfidf_matrix</span><span class="p">[:</span><span class="mi">31962</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -13667,7 +13661,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_tfidf_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training TF-IDF matrix as dense matrix</span>
+<span class="n">train_tfidf_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -13710,7 +13705,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Bag-of-Words Features</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Split bag-of-words matrix into random train and test subsets</span>
 <span class="n">x_train_bow</span><span class="p">,</span> <span class="n">x_valid_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">,</span> <span class="n">y_valid_bow</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">train_bow</span><span class="p">,</span> 
     <span class="n">train</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span> 
@@ -13730,7 +13725,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TF-IDF features</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Split TF-IDF matrix into random train and test subsets</span>
 <span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">x_valid_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">,</span> <span class="n">y_valid_tfidf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">train_tfidf_matrix</span><span class="p">,</span> 
     <span class="n">train</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span> 
@@ -13761,7 +13756,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">Log_Reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Logistic Regression model init</span>
+<span class="n">model_log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13774,7 +13770,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-Bag-of-Words-Features">Using Bag-of-Words Features<a class="anchor-link" href="#Using-Bag-of-Words-Features">¶</a></h3>
+<h3 id="Running-the-Logistic-Regression-model-with-Bag-of-Words-Features">Running the Logistic Regression model with Bag-of-Words Features<a class="anchor-link" href="#Running-the-Logistic-Regression-model-with-Bag-of-Words-Features">¶</a></h3>
 </div>
 </div>
 </div>
@@ -13786,8 +13782,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fitting the Logistic Regression Model</span>
-<span class="n">Log_Reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training data fit with the Logistic Regression</span>
+<span class="n">model_log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13816,9 +13812,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The first part of the list is predicting probabilities for label:0 </span>
-<span class="c1"># and the second part of the list is predicting probabilities for label:1</span>
-<span class="n">prediction_bow</span> <span class="o">=</span> <span class="n">Log_Reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># predict probabilities with valid x data for label:0 and label:1</span>
+<span class="n">low_bow</span> <span class="o">=</span> <span class="n">model_log_reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13832,7 +13827,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">prediction_bow</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">low_bow</span>
 </pre></div>
 </div>
 </div>
@@ -13856,17 +13851,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Calculating-the-F1-score">Calculating the F1 score<a class="anchor-link" href="#Calculating-the-F1-score">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -13875,39 +13859,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># if prediction is greater than or equal to 0.3 than 1 else 0</span>
-<span class="c1"># Where 0 is for positive sentiment tweets and 1 for negative sentiment tweets</span>
-<span class="n">prediction_int</span> <span class="o">=</span> <span class="n">prediction_bow</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="n">prediction_int</span> <span class="o">=</span> <span class="n">prediction_int</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">prediction_int</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score</span>
-<span class="n">log_bow</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid_bow</span><span class="p">,</span> <span class="n">prediction_int</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score with valid y data</span>
+<span class="n">log_score_bow</span> <span class="o">=</span> <span class="n">generateF1Score</span><span class="p">(</span><span class="n">y_valid_bow</span><span class="p">,</span> <span class="n">low_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13921,7 +13874,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">log_bow</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">log_score_bow</span>
 </pre></div>
 </div>
 </div>
@@ -13946,7 +13899,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-TF-IDF-Features">Using TF-IDF Features<a class="anchor-link" href="#Using-TF-IDF-Features">¶</a></h3>
+<h3 id="Running-the-Logistic-Regression-model-with-TF-IDF-Features">Running the Logistic Regression model with TF-IDF Features<a class="anchor-link" href="#Running-the-Logistic-Regression-model-with-TF-IDF-Features">¶</a></h3>
 </div>
 </div>
 </div>
@@ -13958,7 +13911,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">Log_Reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training data fit with the Logistic Regression</span>
+<span class="n">model_log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13987,7 +13941,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">prediction_tfidf</span> <span class="o">=</span> <span class="n">Log_Reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># predict probabilities with valid x data for label:0 and label:1</span>
+<span class="n">log_tfidf</span> <span class="o">=</span> <span class="n">model_log_reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14001,7 +13956,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">prediction_tfidf</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">log_tfidf</span>
 </pre></div>
 </div>
 </div>
@@ -14025,17 +13980,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Calculating-the-F1-score">Calculating the F1 score<a class="anchor-link" href="#Calculating-the-F1-score">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14044,37 +13988,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">prediction_int</span> <span class="o">=</span> <span class="n">prediction_tfidf</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="n">prediction_int</span> <span class="o">=</span> <span class="n">prediction_int</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">prediction_int</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score</span>
-<span class="n">log_tfidf</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid_tfidf</span><span class="p">,</span> <span class="n">prediction_int</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score with valid y data</span>
+<span class="n">log_score_tfidf</span> <span class="o">=</span> <span class="n">generateF1Score</span><span class="p">(</span><span class="n">y_valid_tfidf</span><span class="p">,</span> <span class="n">log_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14088,7 +14003,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">log_tfidf</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">log_score_tfidf</span>
 </pre></div>
 </div>
 </div>
@@ -14124,7 +14039,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-Bag-of-Words-Features">Using Bag-of-Words Features<a class="anchor-link" href="#Using-Bag-of-Words-Features">¶</a></h3>
+<h3 id="Running-the-XGBoost-model-with-Bag-of-Words-Features">Running the XGBoost model with Bag-of-Words Features<a class="anchor-link" href="#Running-the-XGBoost-model-with-Bag-of-Words-Features">¶</a></h3>
 </div>
 </div>
 </div>
@@ -14136,7 +14051,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model_bow</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># XGBoost model with Bag-of-Words init</span>
+<span class="n">model_bow_xgb</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14150,7 +14066,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [60]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model_bow</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training data fit with the XGBoost</span>
+<span class="n">model_bow_xgb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14181,9 +14098,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The first part of the list is predicting probabilities for label:0 </span>
-<span class="c1"># and the second part of the list is predicting probabilities for label:1</span>
-<span class="n">xgb</span> <span class="o">=</span> <span class="n">model_bow</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># predict probabilities with valid x data for label:0 and label:1</span>
+<span class="n">xgb_bow</span> <span class="o">=</span> <span class="n">model_bow_xgb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14197,7 +14113,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [61]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">xgb</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">xgb_bow</span>
 </pre></div>
 </div>
 </div>
@@ -14221,17 +14137,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Calculating-the-F1-score">Calculating the F1 score<a class="anchor-link" href="#Calculating-the-F1-score">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14240,13 +14145,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># if prediction is greater than or equal to 0.3 than 1 else 0</span>
-<span class="c1"># Where 0 is for positive sentiment tweets and 1 for negative sentiment tweets</span>
-<span class="n">xgb</span> <span class="o">=</span> <span class="n">xgb</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="c1"># converting the results to integer type</span>
-<span class="n">xgb_int</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="c1"># calculating f1 score</span>
-<span class="n">xgb_bow</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid_bow</span><span class="p">,</span> <span class="n">xgb_int</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score with valid y data</span>
+<span class="n">xgb_score_bow</span> <span class="o">=</span> <span class="n">generateF1Score</span><span class="p">(</span><span class="n">y_valid_bow</span><span class="p">,</span> <span class="n">xgb_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14260,7 +14160,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">xgb_bow</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">xgb_score_bow</span>
 </pre></div>
 </div>
 </div>
@@ -14285,7 +14185,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-TF-IDF-Features">Using TF-IDF Features<a class="anchor-link" href="#Using-TF-IDF-Features">¶</a></h3>
+<h3 id="%23%23%23-Running-the-XGBoost-model-with-TF-IDF-Features">### Running the XGBoost model with TF-IDF Features<a class="anchor-link" href="#%23%23%23-Running-the-XGBoost-model-with-TF-IDF-Features">¶</a></h3>
 </div>
 </div>
 </div>
@@ -14297,7 +14197,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model_tfidf</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># XGBoost model with TF-IDF init</span>
+<span class="n">model_tfidf_xgb</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14311,7 +14212,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [64]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">model_tfidf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training data fit with the XGBoost</span>
+<span class="n">model_tfidf_xgb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14342,9 +14244,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The first part of the list is predicting probabilities for label:0 </span>
-<span class="c1"># and the second part of the list is predicting probabilities for label:1</span>
-<span class="n">xgb_tfidf</span> <span class="o">=</span> <span class="n">model_tfidf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># predict probabilities with valid x data for label:0 and label:1</span>
+<span class="n">xgb_tfidf</span> <span class="o">=</span> <span class="n">model_tfidf_xgb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14382,17 +14283,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Calculating-the-F1-score">Calculating the F1 score<a class="anchor-link" href="#Calculating-the-F1-score">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14401,13 +14291,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># if prediction is greater than or equal to 0.3 than 1 else 0</span>
-<span class="c1"># Where 0 is for positive sentiment tweets and 1 for negative sentiment tweets</span>
-<span class="n">xgb_tfidf</span> <span class="o">=</span> <span class="n">xgb_tfidf</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="c1"># converting the results to integer type</span>
-<span class="n">xgb_int_tfidf</span> <span class="o">=</span> <span class="n">xgb_tfidf</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="c1"># calculating f1 score</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid_tfidf</span><span class="p">,</span> <span class="n">xgb_int_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score with valid y data</span>
+<span class="n">xgb_score_tfidf</span> <span class="o">=</span> <span class="n">generateF1Score</span><span class="p">(</span><span class="n">y_valid_tfidf</span><span class="p">,</span> <span class="n">xgb_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14421,7 +14306,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [66]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">xgb_score_tfidf</span>
 </pre></div>
 </div>
 </div>
@@ -14458,7 +14343,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [68]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">dct</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">'entropy'</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Decision Tree model init</span>
+<span class="n">model_dct</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">'entropy'</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14471,7 +14357,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-Bag-of-Words-Features">Using Bag-of-Words Features<a class="anchor-link" href="#Using-Bag-of-Words-Features">¶</a></h3>
+<h3 id="Running-the-Decision-Tree-model-with-Bag-of-Words-Features">Running the Decision Tree model with Bag-of-Words Features<a class="anchor-link" href="#Running-the-Decision-Tree-model-with-Bag-of-Words-Features">¶</a></h3>
 </div>
 </div>
 </div>
@@ -14483,7 +14369,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [69]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">dct</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training data fit with the Decision Tree</span>
+<span class="n">model_dct</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_bow</span><span class="p">,</span> <span class="n">y_train_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14514,7 +14401,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">dct_bow</span> <span class="o">=</span> <span class="n">dct</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># predict probabilities with valid x data for label:0 and label:1</span>
+<span class="n">dct_bow</span> <span class="o">=</span> <span class="n">model_dct</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14560,13 +14448,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># if prediction is greater than or equal to 0.3 than 1 else 0</span>
-<span class="c1"># Where 0 is for positive sentiment tweets and 1 for negative sentiment tweets</span>
-<span class="n">dct_bow</span><span class="o">=</span><span class="n">dct_bow</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="c1"># converting the results to integer type</span>
-<span class="n">dct_int_bow</span><span class="o">=</span><span class="n">dct_bow</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="c1"># calculating f1 score</span>
-<span class="n">dct_score_bow</span><span class="o">=</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid_bow</span><span class="p">,</span> <span class="n">dct_int_bow</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score with valid y data</span>
+<span class="n">dct_score_bow</span> <span class="o">=</span> <span class="n">generateF1Score</span><span class="p">(</span><span class="n">y_valid_bow</span><span class="p">,</span> <span class="n">dct_bow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14605,7 +14488,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Using-TF-IDF-Features">Using TF-IDF Features<a class="anchor-link" href="#Using-TF-IDF-Features">¶</a></h3>
+<h3 id="Running-the-Decision-Tree-model-with-TF-IDF-Features">Running the Decision Tree model with TF-IDF Features<a class="anchor-link" href="#Running-the-Decision-Tree-model-with-TF-IDF-Features">¶</a></h3>
 </div>
 </div>
 </div>
@@ -14617,7 +14500,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [72]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">dct</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># training data fit with the Decision Tree</span>
+<span class="n">model_dct</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_tfidf</span><span class="p">,</span> <span class="n">y_train_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14648,7 +14532,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">dct_tfidf</span> <span class="o">=</span> <span class="n">dct</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># predict probabilities with valid x data for label:0 and label:1</span>
+<span class="n">dct_tfidf</span> <span class="o">=</span> <span class="n">model_dct</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_valid_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14686,17 +14571,6 @@ Name: Tidy_Tweets, dtype: object</pre>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Calculating-F1-Score">Calculating F1 Score<a class="anchor-link" href="#Calculating-F1-Score">¶</a></h4>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14705,13 +14579,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># if prediction is greater than or equal to 0.3 than 1 else 0</span>
-<span class="c1"># Where 0 is for positive sentiment tweets and 1 for negative sentiment tweets</span>
-<span class="n">dct_tfidf</span> <span class="o">=</span> <span class="n">dct_tfidf</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="c1"># converting the results to integer type</span>
-<span class="n">dct_int_tfidf</span> <span class="o">=</span> <span class="n">dct_tfidf</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="c1"># calculating f1 score</span>
-<span class="n">dct_score_tfidf</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_valid_tfidf</span><span class="p">,</span> <span class="n">dct_int_tfidf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculating f1 score with valid y data</span>
+<span class="n">dct_score_tfidf</span> <span class="o">=</span> <span class="n">generateF1Score</span><span class="p">(</span><span class="n">y_valid_tfidf</span><span class="p">,</span> <span class="n">dct_tfidf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14762,7 +14631,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [75]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">Algo</span><span class="o">=</span><span class="p">[</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># each model name as array</span>
+<span class="n">Algo</span><span class="o">=</span><span class="p">[</span>
     <span class="s1">'LogisticRegression(Bag-of-Words)'</span><span class="p">,</span> 
     <span class="s1">'XGBoost(Bag-of-Words)'</span><span class="p">,</span> 
     <span class="s1">'DecisionTree(Bag-of-Words)'</span><span class="p">,</span> 
@@ -14783,16 +14653,31 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">log_bow</span><span class="p">,</span> 
-    <span class="n">xgb_bow</span><span class="p">,</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># each model F1 score as array</span>
+<span class="n">xgb_tfidf</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">log_score_bow</span><span class="p">,</span>
+    <span class="n">xgb_score_bow</span><span class="p">,</span>  
     <span class="n">dct_score_bow</span><span class="p">,</span> 
-    <span class="n">log_tfidf</span><span class="p">,</span> 
-    <span class="n">score</span><span class="p">,</span> 
+    <span class="n">log_score_tfidf</span><span class="p">,</span> 
+    <span class="n">xgb_score_tfidf</span><span class="p">,</span> 
     <span class="n">dct_score_tfidf</span>
 <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># compare with each model with F1 score</span>
 <span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span><span class="s1">'Model'</span><span class="p">:</span><span class="n">Algo</span><span class="p">,</span><span class="s1">'F1_Score'</span><span class="p">:</span><span class="n">score</span><span class="p">},</span> 
+    <span class="p">{</span><span class="s1">'Model'</span><span class="p">:</span><span class="n">Algo</span><span class="p">,</span><span class="s1">'F1_Score'</span><span class="p">:</span><span class="n">xgb_tfidf</span><span class="p">},</span> 
     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span>
 <span class="p">)</span>
 </pre></div>
@@ -14920,10 +14805,26 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [79]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_tfidf</span> <span class="o">=</span> <span class="n">tfidf_matrix</span><span class="p">[</span><span class="mi">31962</span><span class="p">:]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># insert the dataset to the test data</span>
+<span class="n">test</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model_log_reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="p">[</span><span class="mi">31962</span><span class="p">:])[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># mark the id and label for test data as submission</span>
+<span class="n">submission</span> <span class="o">=</span> <span class="n">test</span><span class="p">[[</span><span class="s1">'id'</span><span class="p">,</span> <span class="s1">'label'</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -14937,11 +14838,7 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [80]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_pred</span> <span class="o">=</span> <span class="n">Log_Reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_tfidf</span><span class="p">)</span>
-<span class="n">test_pred_int</span> <span class="o">=</span> <span class="n">test_pred</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span>
-<span class="n">test_pred_int</span> <span class="o">=</span> <span class="n">test_pred_int</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="n">test</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_pred_int</span>
-<span class="n">submission</span> <span class="o">=</span> <span class="n">test</span><span class="p">[[</span><span class="s1">'id'</span><span class="p">,</span> <span class="s1">'label'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># save the submission as the CSV file format</span>
 <span class="n">submission</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'result.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -14967,7 +14864,8 @@ Name: Tidy_Tweets, dtype: object</pre>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'result.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># read the submission file</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'result.csv'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
